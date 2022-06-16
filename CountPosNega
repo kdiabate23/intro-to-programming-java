@@ -1,0 +1,52 @@
+package Exercise;
+
+import java.util.Scanner;
+
+/*This program reads an unspecified number of integers, determine how
+ many positive and negative values the program ends with the input 0*/
+public class CountPosNeg {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner in = new Scanner(System.in);
+		int num;
+		int countPos = 0;
+		int countNeg = 0;
+		double total = 0;
+		double average = 0;
+		System.out.print("Enter an integer, the input ends if it is 0: ");
+		num = in.nextInt();
+
+		if (num == 0) { // Checking if first number entered is zero
+			System.out.println("No numbers entered except 0");
+		} else { 
+			//Perform this when the first number entered isn't 0
+			total += num;
+			if (num < 0) {
+				countNeg++;
+			} else if (num > 0) {
+				countPos++;
+			}
+			do {
+
+				num = in.nextInt();
+
+				if (num < 0) {
+					countNeg++;
+				} else if (num > 0) {
+					countPos++;
+				}
+
+				total += num; //Computing total
+				average = total / (countPos + countNeg);
+
+			} while (num != 0);
+
+			System.out.println("The number of positives is " + countPos);
+			System.out.println("The number of negatives is " + countNeg);
+			System.out.println("The total is " + total);
+			System.out.println("The average is " + average);
+		}
+	}
+
+}
